@@ -35,7 +35,7 @@ public abstract class InGameHudMixin extends DrawableHelper {
             client.textRenderer.drawWithShadow(matrices, String.valueOf((int) getCameraPlayer().getHealth()) + "/" + String.valueOf((int) getCameraPlayer().getMaxHealth()), scaledWidth / 2 - 91, scaledHeight - 40, 0xdd2222);
             int food = getCameraPlayer().getHungerManager().getFoodLevel();
             int air = (getCameraPlayer().getAir() + 20) / 16;
-            client.textRenderer.drawWithShadow(matrices, food + "/20" + (food < 10 ? client.textRenderer.getWidth("5") : 0), scaledWidth / 2 + 62,  scaledHeight - 40, 0xa76a40);
+            client.textRenderer.drawWithShadow(matrices, food + "/20", scaledWidth / 2 + 62 + (food < 10 ? client.textRenderer.getWidth("5") : 0),  scaledHeight - 40, 0xa76a40);
             client.textRenderer.drawWithShadow(matrices, air + "/20", scaledWidth / 2 + 62 + (air < 10 ? client.textRenderer.getWidth("5") : 0), scaledHeight - 50, 0x009aff);
             info.cancel();
         }
