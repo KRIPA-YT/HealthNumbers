@@ -19,16 +19,6 @@ public class HealthNumbers implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         self = this;
-        CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
-            dispatcher.register(CommandManager.literal("pos")
-                    .then(CommandManager.argument("x", IntegerArgumentType.integer())
-                            .then(CommandManager.argument("y", IntegerArgumentType. integer()).executes(context -> {
-                HealthNumbers.x = IntegerArgumentType.getInteger(context, "x");
-                HealthNumbers.y = IntegerArgumentType.getInteger(context, "y");
-
-                return 1;
-            }))));
-        });
 
     }
 
