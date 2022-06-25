@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "healthnumbers",
+  "version": "${version}",
+
+  "name": "Health Numbers",
+  "description": "Health Numbers from SBA",
+  "authors": [
+    "KRIPA_YT"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "de.kripa.healthnumbers.HealthNumbers"
+    ]
+  },
+  "mixins": [
+    "healthnumbers.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "minecraft": "~1.18.2",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
