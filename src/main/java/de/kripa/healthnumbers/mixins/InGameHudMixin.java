@@ -7,8 +7,6 @@ import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.LiteralText;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -35,8 +33,10 @@ public abstract class InGameHudMixin extends DrawableHelper {
         if(HealthNumbers.getMod().modOnline) {
             MinecraftClient client = MinecraftClient.getInstance();
             client.textRenderer.drawWithShadow(matrices, String.valueOf((int) getCameraPlayer().getHealth()) + "/" + String.valueOf((int) getCameraPlayer().getMaxHealth()), scaledWidth / 2 - 91, scaledHeight - 40, 0xdd2222);
-            client.textRenderer.drawWithShadow(matrices, String.valueOf(getCameraPlayer().getHungerManager().getFoodLevel()) + "/20", scaledWidth / 2 + 62,  scaledHeight - 40, 0xa76a40);
-            client.textRenderer.drawWithShadow(matrices, String.valueOf(getCameraPlayer().getAir() + "/" + getCameraPlayer().getMaxAir()), scaledWidth / 2 + 50, scaledHeight - 50, 0x009aff);
+            int food = getCameraPlayer().getHungerManager().getFoodLevel();
+            int air = (getCameraPlayer().getAir() + 20) / 16;
+            client.textRenderer.drawWithShadow(matrices, food + "/20" + (food < 10 ? client.textRenderer.getWidth("5") : 0), scaledWidth / 2 + 62,  scaledHeight - 40, 0xa76a40);
+            client.textRenderer.drawWithShadow(matrices, air + "/20", scaledWidth / 2 + 62 + (air < 10 ? client.textRenderer.getWidth("5") : 0), scaledHeight - 50, 0x009aff);
             info.cancel();
         }
     }
@@ -50,7 +50,7 @@ public abstract class InGameHudMixin extends DrawableHelper {
         if(HealthNumbers.getMod().modOnline) {
             if(getRiddenEntity() != null) {
                 MinecraftClient client = MinecraftClient.getInstance();
-                client.textRenderer.drawWithShadow(matrices, String.valueOf((int) getRiddenEntity().getHealth() + "/" + (int) getRiddenEntity().getMaxHealth()), scaledWidth / 2 - 91, scaledHeight - 50, 0xda662b);
+                client.textRenderer.drawWithShadow(matrices, (int) getRiddenEntity().getHealth() + "/" + (int) getRiddenEntity().getMaxHealth(), scaledWidth / 2 - 91, scaledHeight - 50, 0xda662b);
             }
             info.cancel();
         }
