@@ -58,6 +58,10 @@ public abstract class InGameHudMixin extends DrawableHelper {
                 // Air
                 client.textRenderer.drawWithShadow(matrices, air + "/20", scaledWidth / 2 + 62 + (air < 10 ? client.textRenderer.getWidth("5") : 0), scaledHeight - 50, 0x009aff);
             }
+
+            String xyz = (int) getCameraPlayer().getX() + " " + (int) getCameraPlayer().getY() + " " + (int) getCameraPlayer().getZ();
+            int len = client.textRenderer.getWidth(xyz);
+            client.textRenderer.drawWithShadow(matrices, xyz, (scaledWidth - len) / 2, scaledHeight - 40, 0xaaaaaa);
             info.cancel();
         }
     }
