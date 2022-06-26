@@ -10,13 +10,13 @@
   ],
   "contact": {
     "homepage": "",
-    "sources": ""
+    "sources": "https://github.com/KRIPA-YT/HealthNumbers"
   },
 
   "license": "CC0-1.0",
   "icon": "assets/healthnumbers/icon.png",
 
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "client": [
       "de.kripa.healthnumbers.HealthNumbers"
